@@ -1,6 +1,6 @@
 # Objetiva
 
-Objetiva is a plugin for the Kakoune editor that defines some new [object selections](https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#object-selection).
+Objetiva is a plugin for the [Kakoune](http://kakoune.org/) editor that defines some new [object selections](https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#object-selection).
 
 ## Line object
 
@@ -52,3 +52,13 @@ map global normal <a-_> ': objetiva-case-expand-previous<ret>'
 ```
 
 You can move between segments of words in the forward direction using `<minus>` and in the backward direction using `<a-minus>`. You can also expand selection in the forward direction using `_` and in the backward direction using `<a-_>`.
+
+## Instalation
+
+Objetiva depends on the [luar](https://github.com/gustavo-hms/luar) plugin. If you use [plug.kak](https://github.com/robertmeta/plug.kak) to manage your plugins, you can install both by adding the following to your `kakrc`:
+
+```
+plug "gustavo-hms/luar" %{
+    plug "gustavo-hms/objetiva"
+}
+```
