@@ -53,7 +53,7 @@ map global normal <a-_> ': objetiva-case-expand-previous<ret>'
 
 You can move between segments of words in the forward direction using `<minus>` and in the backward direction using `<a-minus>`. You can also expand selection in the forward direction using `_` and in the backward direction using `<a-_>`.
 
-## Instalation
+## Installation
 
 Objetiva depends on the [luar](https://github.com/gustavo-hms/luar) plugin. If you use [plug.kak](https://github.com/robertmeta/plug.kak) to manage your plugins, you can install both by adding the following to your `kakrc`:
 
