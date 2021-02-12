@@ -62,7 +62,7 @@ define-command objetiva-case -docstring %{
             return "]"
         end
 
-        kak.object_case_select(operation(), inner)
+        kak.objetiva_case_select(operation(), inner)
     >
 >
 
@@ -112,7 +112,7 @@ define-command objetiva-case-move -docstring %{
 
         for i = 1, count do
             kak.execute_keys("-save-regs", "/", [[/\w<ret>]])
-            kak.object_case_select("<a-a>", false)
+            kak.objetiva_case_select("<a-a>", false)
         end
     }
 }
@@ -126,7 +126,7 @@ define-command objetiva-case-move-previous -docstring %{
 
         for i = 1, count do
             kak.execute_keys("-save-regs", "/", [[<a-/>\w<ret>]])
-            kak.object_case_select("<a-a>", false)
+            kak.objetiva_case_select("<a-a>", false)
         end
     }
 }
@@ -143,7 +143,7 @@ define-command objetiva-case-expand -docstring %{
 
             for i = 1, count do
                 kak.execute_keys([[/\w<ret>]])
-                kak.object_case_select("<a-a>", false)
+                kak.objetiva_case_select("<a-a>", false)
             end
         }
 
@@ -162,7 +162,7 @@ define-command objetiva-case-expand-previous -docstring %{
 
             for i = 1, count do
                 kak.execute_keys([[<a-/>\w<ret>]])
-                kak.object_case_select("<a-a>", false)
+                kak.objetiva_case_select("<a-a>", false)
             end
         }
 
@@ -237,7 +237,7 @@ define-command objetiva-matching -docstring %{
                     string.format("objetiva-matching-select-shortest %s %s %s", operation, pair.open, pair.close)
             end
 
-            kak.object_matching_execute_all(table.concat(commands, "\n"))
+            kak.objetiva_matching_execute_all(table.concat(commands, "\n"))
         end
 
         local pairs = parse_matching_pairs()
