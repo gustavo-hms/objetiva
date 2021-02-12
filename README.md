@@ -14,7 +14,7 @@ Suggested mapping:
 map global object x '<a-;>objetiva-line<ret>' -docstring line
 ```
 
-That mapping allows you to select a line with `<a-a>x`, or select to the inner line start with `<a-[x`
+That mapping allows you to select a line with `<a-a>x`, or select to the inner line start with `<a-[>x`
 
 ## Matching object
 
