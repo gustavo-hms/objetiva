@@ -9,25 +9,25 @@ define-command objetiva-line -docstring %{
         local to_begin, to_end = object_flags:find("to_begin"), object_flags:find("to_end")
 
         if select_mode == "extend" then
-        	if to_end then
-        		selector = "}"
-        	else
-        		selector = "{"
-        	end
+            if to_end then
+                selector = "}"
+            else
+                selector = "{"
+            end
 
         elseif to_begin and to_end then
-        	selector = "<a-a>"
+            selector = "<a-a>"
 
         elseif to_begin then
-        	selector = "["
+            selector = "["
 
         else
-        	selector = "]"
-    	end
+            selector = "]"
+        end
 
-    	local inner = object_flags:find("inner") and "_" or ""
-    	local command = string.format([[execute-keys %sc^,\n<ret>%s]], selector, inner)
-    	kak.evaluate_commands("-itersel", "try %{" .. command .. "}")
+        local inner = object_flags:find("inner") and "_" or ""
+        local command = string.format([[execute-keys %sc^,\n<ret>%s]], selector, inner)
+        kak.evaluate_commands("-itersel", "try %{" .. command .. "}")
     >
 >
 
@@ -77,25 +77,25 @@ define-command objetiva-case-select -hidden -params 2 %(
             local word, operation, inner = args()
 
             if word:find("_") then
-            	-- Snake case
-            	description = {
-                	open = [[(?<lt>=_).|\b\w]],
-                	close = inner and [[(?=[^_]_).|\b]] or [[_|\w\b]]
-            	}
+                -- Snake case
+                description = {
+                    open = [[(?<lt>=_).|\b\w]],
+                    close = inner and [[(?=[^_]_).|\b]] or [[_|\w\b]]
+                }
 
             elseif word:find("[A-Z]") then
-            	-- Camel and pascal case
-            	description = {
-                	open = [[[A-Z]|\b\w]],
-                	close = [[(?=[^A-Z][A-Z]).|\w\b]]
-            	}
+                -- Camel and pascal case
+                description = {
+                    open = [[[A-Z]|\b\w]],
+                    close = [[(?=[^A-Z][A-Z]).|\w\b]]
+                }
 
             else
-            	-- Kebab case
-            	description = {
-                	open = [[\b\w]],
-                	close = inner and [[\w\b]] or [[-|(?=[\-\w][^\-\w]).]]
-            	}
+                -- Kebab case
+                description = {
+                    open = [[\b\w]],
+                    close = inner and [[\w\b]] or [[-|(?=[\-\w][^\-\w]).]]
+                }
             end
 
             kak.execute_keys(string.format("%sc%s,%s<ret>", operation, description.open, description.close))
@@ -111,9 +111,9 @@ define-command objetiva-case-move -docstring %{
         local count = arg[1] == 0 and 1 or arg[1]
 
         for i = 1, count do
-        	kak.execute_keys("-save-regs", "/", [[/\w<ret>]])
+            kak.execute_keys("-save-regs", "/", [[/\w<ret>]])
             kak.object_case_select("<a-a>", false)
-    	end
+        end
     }
 }
 
@@ -125,9 +125,9 @@ define-command objetiva-case-move-previous -docstring %{
         local count = arg[1] == 0 and 1 or arg[1]
 
         for i = 1, count do
-        	kak.execute_keys("-save-regs", "/", [[<a-/>\w<ret>]])
+            kak.execute_keys("-save-regs", "/", [[<a-/>\w<ret>]])
             kak.object_case_select("<a-a>", false)
-    	end
+        end
     }
 }
 
@@ -177,32 +177,32 @@ define-command objetiva-matching -docstring %{
         local matching_pairs, object_flags, select_mode = args()
 
         function parse_matching_pairs()
-			local pairs = {}
-			local count = 0
+            local pairs = {}
+            local count = 0
 
-			for codepoint in matching_pairs:gmatch("%S+") do
-				if count % 2 == 0 then
-					if codepoint == "(" or codepoint == "[" or codepoint == "{" then
-						codepoint = [[\]] .. codepoint
+            for codepoint in matching_pairs:gmatch("%S+") do
+                if count % 2 == 0 then
+                    if codepoint == "(" or codepoint == "[" or codepoint == "{" then
+                        codepoint = [[\]] .. codepoint
 
-					elseif codepoint == "<" then
-						codepoint = "<lt>"
-					end
+                    elseif codepoint == "<" then
+                        codepoint = "<lt>"
+                    end
 
-					pairs[#pairs + 1] = { open = codepoint }
+                    pairs[#pairs + 1] = { open = codepoint }
 
-				else
-					if codepoint == ")" or codepoint == "]" or codepoint == "}" then
-						codepoint = [[\]] .. codepoint
-					end
+                else
+                    if codepoint == ")" or codepoint == "]" or codepoint == "}" then
+                        codepoint = [[\]] .. codepoint
+                    end
 
-					pairs[#pairs].close = codepoint
-				end
+                    pairs[#pairs].close = codepoint
+                end
 
-				count = count + 1
-			end
+                count = count + 1
+            end
 
-			return pairs
+            return pairs
         end
 
         function operation()
@@ -229,19 +229,19 @@ define-command objetiva-matching -docstring %{
             return inner and "<a-]>" or "]"
         end
 
-    	function select_shortest(pairs, operation)
-    		local commands = {}
+        function select_shortest(pairs, operation)
+            local commands = {}
 
-    		for _, pair in ipairs(pairs) do
-    			commands[#commands + 1] =
-    				string.format("objetiva-matching-select-shortest %s %s %s", operation, pair.open, pair.close)
-    		end
+            for _, pair in ipairs(pairs) do
+                commands[#commands + 1] =
+                    string.format("objetiva-matching-select-shortest %s %s %s", operation, pair.open, pair.close)
+            end
 
-    		kak.object_matching_execute_all(table.concat(commands, "\n"))
-    	end
+            kak.object_matching_execute_all(table.concat(commands, "\n"))
+        end
 
-		local pairs = parse_matching_pairs()
-    	select_shortest(pairs, operation())
+        local pairs = parse_matching_pairs()
+        select_shortest(pairs, operation())
     )
 )
 
