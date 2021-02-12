@@ -60,6 +60,16 @@ Objetiva depends on the [luar](https://github.com/gustavo-hms/luar) plugin. If y
 ```
 plug "gustavo-hms/luar" %{
 	require-module luar
-    plug "gustavo-hms/objetiva"
+    plug "gustavo-hms/objetiva" %{
+        # Suggested mappings
+
+        map global object x '<a-;>objetiva-line<ret>' -docstring line
+        map global object m '<a-;>objetiva-matching<ret>' -docstring matching
+        map global object - '<a-;>objetiva-case<ret>' -docstring case
+        map global normal <minus> ': objetiva-case-move<ret>'
+        map global normal _ ': objetiva-case-expand<ret>'
+        map global normal <a-minus> ': objetiva-case-move-previous<ret>'
+        map global normal <a-_> ': objetiva-case-expand-previous<ret>'
+    }
 }
 ```
