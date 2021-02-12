@@ -1,3 +1,5 @@
+require-module luar
+
 define-command objetiva-line -docstring %{
     objetiva-line: select a line.
 } %<
