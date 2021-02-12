@@ -26,7 +26,7 @@ Suggested mapping:
 map global object m '<a-;>objetiva-matching<ret>' -docstring matching
 ```
 
-Now, you can use, say, `<a-i>m` to select everything enclosed by parentheses.
+Now, you can use, say, `<a-i>m` to select everything inside parentheses (or braces, or whatever is defined by the option `matching_pairs`) but excluding the parentheses themselves, or `<a-a>m` to select *including* parentheses. In the same vein, `]m` selects from the cursor to the end of the region enclosed by parentheses.
 
 ## Case object
 
@@ -59,6 +59,7 @@ Objetiva depends on the [luar](https://github.com/gustavo-hms/luar) plugin. If y
 
 ```
 plug "gustavo-hms/luar" %{
+	require-module luar
     plug "gustavo-hms/objetiva"
 }
 ```
