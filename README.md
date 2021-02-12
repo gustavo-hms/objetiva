@@ -4,7 +4,7 @@ Objetiva is a plugin for the [Kakoune](http://kakoune.org/) editor that defines 
 
 ## Line object
 
-A line object is defined with the command `objetiva-line`. You may wonder why a line object is needed if we already have the `x` key. Well, the `x` key defines a *movement* whereas `objetiva-line` defines an *object-selection*, allowing you to select, for instance, an *inner line* (a line without the surrounding whitespaces), or select to the line end using the `]` key (instead of having to learn yet another key combination like `Gl`).
+A line object is defined with the command `objetiva-line`. You may wonder why a line object is needed if we already have the `x` key. Well, the `x` key defines a *movement* whereas `objetiva-line` defines an *object selection*, allowing you to select, for instance, an *inner line* (a line without the surrounding whitespaces), or select to the line end using the `]` key (instead of having to learn yet another key combination like `Gl`).
 
 Also, if you are in an empty line, the `x` key moves the cursor to the *next line* instead of staying in the current one. This command, on the other hand, makes the cursor stays in the current line. 
 
