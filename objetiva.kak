@@ -130,8 +130,8 @@ define-command objetiva-case-move-previous -docstring %{
 }
 
 
-define-command objetiva-case-move-expand -docstring %{
-    objetiva-case-move-expand: expand the selection to the next segment of a word using either camel case, snake case or kebab case.
+define-command objetiva-case-expand -docstring %{
+    objetiva-case-expand: expand the selection to the next segment of a word using either camel case, snake case or kebab case.
 } %{
     evaluate-commands -itersel -save-regs ^/ %{
         execute-keys -save-regs '' Z
@@ -149,8 +149,8 @@ define-command objetiva-case-move-expand -docstring %{
     }
 }
 
-define-command objetiva-case-move-expand-previous -docstring %{
-    objetiva-case-move-expand-previous: expand the selection to the previous segment of a word using either camel case, snake case or kebab case.
+define-command objetiva-case-expand-previous -docstring %{
+    objetiva-case-expand-previous: expand the selection to the previous segment of a word using either camel case, snake case or kebab case.
 } %{
     evaluate-commands -itersel -save-regs ^/ %{
         execute-keys -save-regs '' Z
