@@ -35,7 +35,7 @@ The command `objetiva-case` selects a segment of a word written in any of the fo
 Suggested mapping:
 
 ```
-map global object - '<a-;>objetiva-case<ret>' -docstring case
+map global object <minus> '<a-;>objetiva-case<ret>' -docstring case
 ```
 
 Now you can use `<a-a>-` to select a segment of a word and `<a-i>-` to select the segment excluding `_` (for snake case words) and `-` (for kebab case words).
@@ -65,7 +65,7 @@ plug "gustavo-hms/luar" %{
 
         map global object x '<a-;>objetiva-line<ret>' -docstring line
         map global object m '<a-;>objetiva-matching<ret>' -docstring matching
-        map global object - '<a-;>objetiva-case<ret>' -docstring case
+        map global object <minus> '<a-;>objetiva-case<ret>' -docstring case
         map global normal <minus> ': objetiva-case-move<ret>'
         map global normal _ ': objetiva-case-expand<ret>'
         map global normal <a-minus> ': objetiva-case-move-previous<ret>'
