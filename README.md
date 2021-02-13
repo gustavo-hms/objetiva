@@ -59,7 +59,7 @@ Objetiva depends on the [luar](https://github.com/gustavo-hms/luar) plugin. If y
 
 ```
 plug "gustavo-hms/luar" %{
-	require-module luar
+    require-module luar
     plug "gustavo-hms/objetiva" %{
         # Suggested mappings
 
