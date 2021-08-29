@@ -36,19 +36,19 @@ Suggested mapping:
 map global object m '<a-;>objetiva-matching<ret>' -docstring matching
 ---
 
-Now, you can use, say, `<a-i>m` to select everything enclosed by parentheses.
+Now, you can use, say, `<a-i>m` to select everything inside parentheses (or braces, or whatever is defined by the option `matching_pairs`) but excluding the parentheses themselves, or `<a-a>m` to select *including* parentheses. In the same vein, `]m` selects from the cursor to the end of the region enclosed by parentheses.
 
 == Case object
 
-The command `objetiva-case` selects a segment of a word written in any of the following conventions: camelCase, snake_case and kebab-case.
+The command `objetiva-case` selects a segment of a word written in any of the following conventions: camelCase, snake_case and kebab-case. The plugin detects automatically the convention used for each word and behaves accordingly. So, you can have a single file with many case conventions and everything will work as expected.
 
 Suggested mapping:
 
 ---
-map global object - '<a-;>objetiva-case<ret>' -docstring case
+map global object <minus> '<a-;>objetiva-case<ret>' -docstring case
 ---
 
-Now you can use `<a-a>-` to select a segment of a word.
+Now you can use `<a-a>-` to select a segment of a word and `<a-i>-` to select the segment excluding `_` (for snake case words) and `-` (for kebab case words).
 
 == Case movement
 
