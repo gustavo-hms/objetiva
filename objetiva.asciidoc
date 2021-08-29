@@ -2,6 +2,16 @@
 
 Objetiva defines some new object selections for Kakoune.
 
+== Usage
+
+To use it, you first need to require the `objetiva` module:
+
+---
+require-module objetiva
+---
+
+Then, read the sections bellow to know how to define mappings for its object selections.
+
 == Line object
 
 A line object is defined with the command `objetiva-line`. You may wonder why a line object is needed if we already have the `x` key. Well, the `x` key defines a *movement* whereas `objetiva-line` defines an *object-selection*, allowing you to select, for instance, an *inner line* (a line without the surrounding whitespaces), or select to the line end using the `]` key (instead of having to learn yet another key combination like `Gl`).

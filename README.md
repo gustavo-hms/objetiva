@@ -2,6 +2,16 @@
 
 Objetiva is a plugin for the [Kakoune](http://kakoune.org/) editor that defines some new [object selections](https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#object-selection).
 
+## Usage
+
+To use it, you first need to require the `objetiva` module:
+
+```kak
+require-module objetiva
+```
+
+Then, read the sections bellow to know how to define mappings for its object selections.
+
 ## Line object
 
 A line object is defined with the command `objetiva-line`. You may wonder why a line object is needed if we already have the `x` key. Well, the `x` key defines a *movement* whereas `objetiva-line` defines an *object-selection*, allowing you to select, for instance, an *inner line* (a line without the surrounding whitespaces), or select to the line end using the `]` key (instead of having to learn yet another key combination like `Gl`).
@@ -10,7 +20,7 @@ Also, if you are in an empty line, the `x` key moves the cursor to the *next lin
 
 Suggested mapping:
 
-```
+```kak
 map global object x '<a-;>objetiva-line<ret>' -docstring line
 ```
 
@@ -22,7 +32,7 @@ A matching object is like the `m` key for object selections. The command `objeti
 
 Suggested mapping:
 
-```
+```kak
 map global object m '<a-;>objetiva-matching<ret>' -docstring matching
 ```
 
@@ -34,7 +44,7 @@ The command `objetiva-case` selects a segment of a word written in any of the fo
 
 Suggested mapping:
 
-```
+```kak
 map global object - '<a-;>objetiva-case<ret>' -docstring case
 ```
 
@@ -44,7 +54,7 @@ Now you can use `<a-a>-` to select a segment of a word.
 
 Although not an object selection, this plugin also defines commands for a *case movement* since it comes in handy. If you define the following mappings:
 
-```
+```kak
 map global normal <minus> ': objetiva-case-move<ret>'
 map global normal _ ': objetiva-case-expand<ret>'
 map global normal <a-minus> ': objetiva-case-move-previous<ret>'
@@ -57,8 +67,10 @@ You can move between segments of words in the forward direction using `<minus>` 
 
 Objetiva depends on the [luar](https://github.com/gustavo-hms/luar) plugin. If you use [plug.kak](https://github.com/robertmeta/plug.kak) to manage your plugins, you can install both by adding the following to your `kakrc`:
 
-```
+```kak
 plug "gustavo-hms/luar" %{
-    plug "gustavo-hms/objetiva"
+    plug "gustavo-hms/objetiva" %{
+        require-module objetiva
+    }
 }
 ```

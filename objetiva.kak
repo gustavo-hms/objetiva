@@ -1,3 +1,5 @@
+provide-module objetiva %
+
 require-module luar
 
 define-command objetiva-line -docstring %{
@@ -268,3 +270,5 @@ define-command objetiva-matching-execute-all -hidden -params 1 %{
         execute-keys z
     }
 }
+
+
