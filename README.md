@@ -65,22 +65,22 @@ You can move between segments of words in the forward direction using `<minus>` 
 
 ## Installation
 
-Objetiva depends on the [luar](https://github.com/gustavo-hms/luar) plugin. If you use [plug.kak](https://github.com/robertmeta/plug.kak) to manage your plugins, you can install both by adding the following to your `kakrc`:
+Objetiva requires [luar](https://github.com/gustavo-hms/luar). If you use [Almoxarife](https://github.com/gustavo-hms/almoxarife), you can install both adding this to your `almoxarife.yaml`:
 
-```kak
-plug "gustavo-hms/luar" %{
-    plug "gustavo-hms/objetiva" %{
-        require-module objetiva
+```yaml
+luar:
+  location: https://github.com/gustavo-hms/luar
 
-        # Suggested mappings
+  objetiva:
+    location: https://github.com/gustavo-hms/objetiva
+    config: |
+      # Suggested mappings
 
-        map global object x '<a-;>objetiva-line<ret>' -docstring line
-        map global object m '<a-;>objetiva-matching<ret>' -docstring matching
-        map global object <minus> '<a-;>objetiva-case<ret>' -docstring case
-        map global normal <minus> ': objetiva-case-move<ret>'
-        map global normal _ ': objetiva-case-expand<ret>'
-        map global normal <a-minus> ': objetiva-case-move-previous<ret>'
-        map global normal <a-_> ': objetiva-case-expand-previous<ret>'
-    }
-}
+      map global object x '<a-;>objetiva-line<ret>' -docstring line
+      map global object m '<a-;>objetiva-matching<ret>' -docstring matching
+      map global object <minus> '<a-;>objetiva-case<ret>' -docstring case
+      map global normal <minus> ': objetiva-case-move<ret>'
+      map global normal _ ': objetiva-case-expand<ret>'
+      map global normal <a-minus> ': objetiva-case-move-previous<ret>'
+      map global normal <a-_> ': objetiva-case-expand-previous<ret>'
 ```
