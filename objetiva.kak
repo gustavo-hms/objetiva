@@ -182,7 +182,10 @@ define-command objetiva-matching -docstring %{
             local pairs = {}
             local count = 0
 
-            for codepoint in matching_pairs:gmatch("%S+") do
+            for codept in matching_pairs:gmatch("%S+") do
+                -- Since Lua 5.5, for variables are read only.
+                local codepoint = codept
+
                 if count % 2 == 0 then
                     if codepoint == "(" or codepoint == "[" or codepoint == "{" then
                         codepoint = [[\]] .. codepoint
